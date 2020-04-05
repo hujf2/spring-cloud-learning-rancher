@@ -10,7 +10,7 @@
 
     <modules>
          <module>microservice-discovery-eureka</module>
-
+        <module>microservice-discovery-eureka-k8s</module>
     </modules>
 
     <properties>

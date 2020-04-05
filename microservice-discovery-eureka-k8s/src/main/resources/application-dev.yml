@@ -1,0 +1,17 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: password123
+server:
+  port: 8762
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password123@localhost:8762/eureka
+  instance:
+    hostname: eureka-server1
+spring:
+  application:
+    name: microservice-discovery-eureka

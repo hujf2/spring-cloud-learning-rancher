@@ -11,7 +11,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>microservice-discovery-eureka</artifactId>
+	<artifactId>microservice-discovery-eureka-k8s</artifactId>
 	<packaging>jar</packaging>
 
 	<properties>
