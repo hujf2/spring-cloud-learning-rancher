@@ -1,0 +1,9 @@
+dubbo:
+  application:
+    name: order-service-provider
+  registry:
+    address: 192.168.88.163:2181
+    protocol: zookeeper
+
+server:
+  port: 8081
