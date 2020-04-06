@@ -1,0 +1,9 @@
+dubbo:
+  application:
+    name: dubbo-provider
+  registry:
+    address: 192.168.88.164:2181
+    protocol: zookeeper
+  protocol:
+    name: dubbo
+    port: 20880

@@ -9,8 +9,13 @@
     <packaging>pom</packaging>
 
     <modules>
-         <module>microservice-discovery-eureka</module>
+        <module>microservice-discovery-eureka</module>
         <module>microservice-discovery-eureka-k8s</module>
+        <module>dubbo-provider</module>
+        <module>dubbo-consumer</module>
+        <module>dubbo-api-interface</module>
+
+
     </modules>
 
     <properties>
