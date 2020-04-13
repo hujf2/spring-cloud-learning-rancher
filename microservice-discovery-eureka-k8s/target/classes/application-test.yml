@@ -1,0 +1,24 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: password123
+server:
+  port: 8762
+
+# 注册Eureka服务
+eureka:
+  client:
+    # Eureka服务注册中心会将自己作为客户端来尝试注册它自己，必須禁止
+    register-with-eureka: false
+    fetch-registry: false
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://user:password123@localhost:8762/eureka
+#  instance:
+#    hostname: eureka-server1
+spring:
+  application:
+    name: microservice-discovery-eureka

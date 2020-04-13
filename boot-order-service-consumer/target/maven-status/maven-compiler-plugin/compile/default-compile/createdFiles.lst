@@ -1,0 +1,3 @@
+com\cott\gmail\bootorderserviceconsumer\controller\OrderController.class
+com\cott\gmail\bootorderserviceconsumer\BootOrderServiceConsumerApplication.class
+com\cott\gmail\bootorderserviceconsumer\service\impl\OrderServiceImpl.class

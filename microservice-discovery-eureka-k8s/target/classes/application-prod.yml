@@ -1,0 +1,14 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: password123
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      http://user:password123@10.31.46.11:8762/eureka,http://user:password123@10.30.181.15:8762/eureka

@@ -17,6 +17,7 @@
         <module>api-interface</module>
         <module>boot-user-service-provider</module>
         <module>boot-order-service-consumer</module>
+        <module>microservice-robot</module>
 
 
     </modules>

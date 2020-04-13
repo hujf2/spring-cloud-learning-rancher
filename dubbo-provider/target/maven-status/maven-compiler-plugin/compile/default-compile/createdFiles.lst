@@ -1,0 +1,3 @@
+com\tengge\dubboprovider\DubboProviderApplication.class
+com\tengge\storage\impl\UserServiceImpl.class
+demo\spring\boot\dubbo\provider\service\GreetingServiceImpl.class
