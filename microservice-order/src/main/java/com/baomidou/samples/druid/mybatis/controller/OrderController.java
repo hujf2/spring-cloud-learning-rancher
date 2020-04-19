@@ -13,8 +13,8 @@ public class OrderController {
     @RequestMapping(value="/order/getOrderById", method={RequestMethod.GET})
     public CallResult query() throws Exception {
         log.info("订单微服务");
-        int a = 60/0;
-        return CallResult.success("订单微服务");
+//        int a = 60/0;
+        return CallResult.success("01 订单微服务");
     }
 
 

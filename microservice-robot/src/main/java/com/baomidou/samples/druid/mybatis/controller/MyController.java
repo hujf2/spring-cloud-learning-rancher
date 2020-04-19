@@ -1,7 +1,6 @@
 package com.baomidou.samples.druid.mybatis.controller;
 
 import com.baomidou.samples.druid.mybatis.controller.myuser.RemoteClientMyUser;
-import com.baomidou.samples.druid.mybatis.controller.ordercall.RemoteClientGood;
 import com.baomidou.samples.druid.mybatis.service.message.JsoupService;
 import com.baomidou.samples.druid.mybatis.structrue.CallResult;
 import com.baomidou.samples.druid.mybatis.utils.RobotUtil;
@@ -30,14 +29,6 @@ public class MyController {
     @Autowired
     JsoupService jsoupService;
 
-    @SuppressWarnings("all")
-    @Autowired
-    RemoteClient remoteClient;
-
-
-    @SuppressWarnings("all")
-    @Autowired
-    RemoteClientGood remoteClientGood;
 
     @SuppressWarnings("all")
     @Autowired
@@ -54,23 +45,9 @@ public class MyController {
 
     @RequestMapping(value="/callmyuser", method={RequestMethod.GET})
     public CallResult query3() throws Exception {
-        System.out.println(" ...... call 。。。。 " );
+        System.out.println(" ....robot.. call 。。myuser。。 " );
         return CallResult.success(remoteClientMyUser.getGood());
     }
-
-
-    @RequestMapping(value="/queryGood", method={RequestMethod.GET})
-    public CallResult query() throws Exception {
-        System.out.println(" ...... call 。。。。 " );
-        return CallResult.success(remoteClient.getGood());
-    }
-
-    @RequestMapping(value="/realQueryGood", method={RequestMethod.GET})
-    public CallResult query2() throws Exception {
-        System.out.println(" ...... call 。。。。 " );
-        return CallResult.success(remoteClientGood.getGood());
-    }
-
 
 
     @RequestMapping(value="/try0", method={RequestMethod.GET})

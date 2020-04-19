@@ -296,3 +296,8 @@ spring:
  }
  
 `
+
+# 启动nacos
+`D:\nacos\nacos-1.1.3\distribution\target\nacos-server-1.1.3\nacos\bin>startup.cmd`
+# 启动sentinel
+`C:\Users\elnvo\Downloads>java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.6.3.jar`

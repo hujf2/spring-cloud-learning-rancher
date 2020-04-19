@@ -1,6 +1,5 @@
 package com.baomidou.samples.druid.mybatis.controller.myuser;
 
-import com.baomidou.samples.druid.mybatis.controller.ordercall.RemoteClientGood;
 import com.baomidou.samples.druid.mybatis.structrue.CallResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -16,8 +15,8 @@ public class FallbackRemoteClientMyUser implements RemoteClientMyUser{
 
    @Override
    public CallResult getGood(){
-        log.info("调用myuser 失败");
-        return CallResult.failure("调用myuser 失败");
+        log.info("robot 调用 myuser 失败");
+        return CallResult.failure("robot 调用 myuser 失败");
    }
 
 }
