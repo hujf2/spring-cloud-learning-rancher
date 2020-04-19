@@ -9,20 +9,30 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>microservice-discovery-eureka</module>
-        <module>microservice-discovery-eureka-k8s</module>
-        <module>dubbo-provider</module>
-        <module>dubbo-consumer</module>
-        <module>dubbo-api-interface</module>
-        <module>api-interface</module>
-        <module>boot-user-service-provider</module>
-        <module>boot-order-service-consumer</module>
+        <!--<module>microservice-discovery-eureka</module>-->
+        <!--<module>microservice-discovery-eureka-k8s</module>-->
+        <!--<module>dubbo-provider</module>-->
+        <!--<module>dubbo-consumer</module>-->
+        <!--<module>dubbo-api-interface</module>-->
+        <!--<module>api-interface</module>-->
+        <!--<module>boot-user-service-provider</module>-->
+        <!--<module>boot-order-service-consumer</module>-->
         <module>microservice-robot</module>
-
-
+        <module>microservice-order</module>
+        <module>microservice-myuser</module>
+        <!--<module>microservice-order</module>-->
+        <!--<module>microservice-testlog</module>-->
+        <!--<module>mapabc-common</module>-->
     </modules>
 
     <properties>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <dubbo.version>2.7.6</dubbo.version>
+
+        <com.mapabc.common.version>1.0.2</com.mapabc.common.version>
+        <com.mapabc.model.version>1.0.1</com.mapabc.model.version>
+        <com.mapabc.protobuf.version>1.0.1</com.mapabc.protobuf.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -31,26 +41,93 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.2.RELEASE</version>
+        <version>2.1.5.RELEASE</version>
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+
+        <!-- 1. nacos-增加配置中心的依赖 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!-- 2. nacos-服务发现功能依赖 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <!-- 2. 引入open-foreign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Spring boot actuator to expose metrics endpoint -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- Micormeter core dependecy  -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-core</artifactId>
+        </dependency>
+        <!-- Micrometer Prometheus registry  -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+            </dependency>
+
+            <!--SpringCloud-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Camden.SR3</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!--SpringCloud Alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="log.root.level" source="logging.root.level" defaultValue="logs"/>
+    <springProperty scope="context" name="log.home" source="logging.home" defaultValue="logs"/>
+    <springProperty scope="context" name="appName" source="spring.application.name" defaultValue="mapabc-project"/>
+    <springProperty scope="context" name="port" source="server.port" defaultValue="8080"/>
+    <!--模块编号ID	Integer	主模块ID-->
+    <springProperty scope="context" name="moduleId" source="logging.business.moduleId" defaultValue="0001"/>
+    <!--应用路径	String	应用的URL-->
+    <springProperty scope="context" name="accessPathName" source="logging.business.accessPathName" defaultValue="0001"/>
+    <!--项目ID	Integer	项目ID对照表-->
+    <springProperty scope="context" name="projectId" source="logging.business.projectId" defaultValue="0001"/>
+    <!--子模块编号ID	Integer	子模块ID-->
+    <springProperty scope="context" name="childModuleId" source="logging.business.childModuleId" defaultValue="0001"/>
+    <!--业务名称	String	自定义业务名称-->
+    <springProperty scope="context" name="businessName" source="logging.business.businessName" defaultValue="0001"/>
+    <!--城市ID	Integer	城市名称-->
+    <springProperty scope="context" name="cityId" source="logging.business.cityId" defaultValue="0001"/>
+    <!--省份ID	Integer	省份名称-->
+    <springProperty scope="context" name="provinceId" source="logging.business.provinceId" defaultValue="0001"/>
+
+
+    <!-- 控制台 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %M - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 默认输出文件 -->
+    <appender name="DEFAULT-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/default/common-default.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/default/common-default.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <!-- provides the fields in the configured pattern -->
+                <timestamp/>
+                <pattern>
+                    <!-- the pattern that defines what to include -->
+                    <pattern>
+                        {
+                        <!--自定义日志-->
+                        "accessLog":"%message",
+                        <!--日志级别-->
+                        "loggingLevel":"%level",
+                        <!--模块名称-->
+                        "moduleName":"%X{moduleName}",
+                        <!--方法名称-->
+                        "methodName":"%X{methodName}",
+                        <!--类名称-->
+                        "className":"%logger{36} - %M",
+                        <!--线程名称-->
+                        "threadId":"%thread",
+                        <!--请求URL 只有contoller需要-->
+                        "requestURI":"%X{req.requestURI}",
+                        <!--ip地址 只有contoller需要-->
+                        "remoteHost":"%X{req.remoteHost}",
+                        <!--请求类型 GET POST-->
+                        "method":"%X{req.method}",
+                        <!--请求参数-->
+                        "queryString":"%X{req.queryString}",
+                        <!--userAgent-->
+                        "userAgent":"%X{req.userAgent}",
+                        <!--xForwardedFor-->
+                        "xForwardedFor":"%X{req.xForwardedFor}",
+                        <!--请求时长-->
+                        "requestTime":"#asLong{%X{req.requestTime}}",
+                        <!--接口名称	String	服务或者接口名称-->
+                        "interfaceName":"%X{interfaceName}",
+                        <!--接口名称	String	服务或者接口名称-->
+                        "browserType":"%X{browserType}",
+                        <!--用户id-->
+                        "userId":"%X{userId}",
+                        <!--用户行为ID	Integer	操作行为映射表-->
+                        "behaviorsId":"%X{behaviorsId}",
+                        "dataSourceId":"%X{dataSourceId}",
+                        "readAmount":"#asLong{%X{readAmount}}",
+                        "writeAmount":"#asLong{%X{writeAmount}}",
+                        "indexId":"%X{indexId}",
+                        <!--指数项	String	指数项名称(英文)-->
+                        "indexItem":"%X{indexItem}",
+
+                        <!--应用名称-->
+                        "appName": "${appName}",
+                        <!--端口号-->
+                        "port": "${port}",
+                        <!--模块id-->
+                        "moduleId": "${moduleId}",
+                        "accessPathName":"${accessPathName}",
+                        "projectId":"${projectId}",
+                        "childModuleId":"${childModuleId}",
+                        "businessName":"${businessName}",
+                        "cityId":"${cityId}",
+                        "provinceId":"${provinceId}"
+
+                        }
+                    </pattern>
+                </pattern>
+                <version/>
+                <stackTrace/>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!-- ===================================================================== -->
+    <!--
+        <logger name="com.mapabc.data.share" additivity="false">
+            <level value="${log.root.level}"/>
+            <appender-ref ref="DEFAULT-APPENDER"/>
+        </logger>-->
+
+    <!-- 屏蔽logger -->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
+    <logger name="org.mybatis.spring" level="WARN"/>
+    <logger name="springfox" level="WARN"/>
+    <logger name="com.mapabc.data.share.config" level="WARN"/>
+    <!-- 屏蔽jdk日志 -->
+    <logger name="java" level="WARN"/>
+    <!-- 屏蔽logger 结束-->
+    <root level="${log.root.level}">
+        <!--程序调试使用输出控制台-->
+        <appender-ref ref="STDOUT"/>
+        <!--输出文件-->
+        <appender-ref ref="DEFAULT-APPENDER"/>
+    </root>
+</configuration>

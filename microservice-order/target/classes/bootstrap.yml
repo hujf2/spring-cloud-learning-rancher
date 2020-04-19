@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: microservice-order
+  cloud:
+    sentinel:
+      transport:
+#        port: 8721
+        dashboard: localhost:8080
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        # 共享的配置列表
+        shared-dataids: foo.yaml,bar.yaml
+        refreshable-dataids: foo.yaml,bar.yaml
+        file-extension: yaml

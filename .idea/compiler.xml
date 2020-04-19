@@ -6,26 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-interface" />
-        <module name="boot-order-service-consumer" />
-        <module name="boot-user-service-provider" />
-        <module name="demo-spring-boot-dubbo-api" />
-        <module name="demo-spring-boot-dubbo-consumer" />
-        <module name="demo-spring-boot-dubbo-provider" />
-        <module name="microservice-discovery-eureka" />
-        <module name="microservice-discovery-eureka-k8s" />
+        <module name="microservice-myuser" />
+        <module name="microservice-order" />
         <module name="microservice-robot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="api-interface" target="1.8" />
-      <module name="boot-order-service-consumer" target="1.8" />
-      <module name="boot-user-service-provider" target="1.8" />
-      <module name="demo-spring-boot-dubbo-api" target="1.8" />
-      <module name="demo-spring-boot-dubbo-consumer" target="1.8" />
-      <module name="demo-spring-boot-dubbo-provider" target="1.8" />
-      <module name="microservice-discovery-eureka" target="1.8" />
-      <module name="microservice-discovery-eureka-k8s" target="1.8" />
+      <module name="microservice-myuser" target="1.8" />
+      <module name="microservice-order" target="1.8" />
       <module name="microservice-robot" target="1.8" />
       <module name="spring-cloud-learning-rancher" target="1.8" />
     </bytecodeTargetLevel>

@@ -1,12 +1,14 @@
 package com.baomidou.samples.druid.mybatis;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,12 +17,15 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @EnableFeignClients
 @EnableDiscoveryClient
 @ComponentScan("com.baomidou.samples.druid.mybatis.*")
 @SpringBootApplication(exclude = DruidDataSourceAutoConfigure.class)
 @MapperScan("com.baomidou.samples.druid.mybatis.mapper")
 public class RobotApplication {
+
+  @LoadBalanced
   @Bean
   public RestTemplate restTemplate() {
     return new RestTemplate();
@@ -58,23 +63,20 @@ public class RobotApplication {
     return new ArrayList<String>();
   }
 
-  @Bean
-  public DemoMetrics demoMetrics(){
-    return new DemoMetrics();
-  }
+//  @Bean
+//  public DemoMetrics demoMetrics(){
+//    return new DemoMetrics();
+//  }
 
 
 //  public static void main(String[] args) {
-//
 //    SpringApplication.run(RobotApplication.class, args);
 //  }
 
   public static void main(String[] args) {
+    log.info("应用程序现在启动了");
     SpringApplicationBuilder builder = new SpringApplicationBuilder(RobotApplication.class);
-    //SpringApplication.run(SystemctlApplication.class, args);
     builder.headless(false)
-            // .web(WebApplicationType.NONE)
-            // .bannerMode(Banner.Mode.OFF)
             .run(args);
   }
 

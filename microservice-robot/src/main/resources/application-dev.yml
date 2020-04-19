@@ -29,5 +29,9 @@ mybatis:
   mapper-locations: classpath*:mapper/com/**/*Mapper.xml
   type-aliases-package: tk.mybatis.springboot.model
 
+feign:
+  sentinel:
+    enabled: true
+
 server:
-  port: 9698
+  port: 9000
